@@ -1,0 +1,12 @@
+[Unit]
+Description=Remount ESP before sleep for multi-OS setups
+After=sleep.target
+
+[Install]
+WantedBy=multi-user.target sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/mount /media/ESP
+ExecStartPost=/bin/mount /boot
+
